@@ -1,0 +1,36 @@
+# filebeat.config:
+#   prospectors:
+#     path: ${path.config}/prospectors.d/*.yml
+#     reload.enabled: false
+#   modules:
+#     path: ${path.config}/modules.d/*.yml
+#     reload.enabled: false
+
+# processors:
+# - add_cloud_metadata:
+
+# output.elasticsearch:
+#   hosts: ['elasticsearch:9200']
+#   username: elastic
+#   password: changeme
+
+# filebeat.config:
+# # https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-reference-yml.html
+#   prospectors:
+#     type: log
+#     enabled: true
+#     paths:
+#       - /var/log/jarvis/dev.log
+
+filebeat.prospectors:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/jarvis/*.log
+
+output.logstash:
+  # Boolean flag to enable or disable the output module.
+  enabled: true
+
+  # The Logstash hosts
+  hosts: ["logstash:5044"]

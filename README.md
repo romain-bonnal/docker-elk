@@ -256,3 +256,27 @@ logstash:
   environment:
     LS_JAVA_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=18080 -Dcom.sun.management.jmxremote.rmi.port=18080 -Djava.rmi.server.hostname=DOCKER_HOST_IP -Dcom.sun.management.jmxremote.local.only=false"
 ```
+
+
+## Extras
+
+### Filebeat
+
+### Logstash
+
+Inject logs into logstash
+```console
+nc logstash 5000 < /var/www/sandaya/app/logs/lxc.log
+```
+
+### Elasticsearch
+
+show index
+http://elasticsearch:9200/_aliases?pretty
+
+clean index
+```console
+curl -XDELETE 'http://elasticsearch:9200/_all/'
+```
+
+### Kibana

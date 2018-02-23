@@ -23,6 +23,7 @@ services:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "5000:5000"
+      - "5044:5044"
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
@@ -42,7 +43,25 @@ services:
     depends_on:
       - elasticsearch
 
-networks:
+  filebeat:
+    build:
+      context: filebeat/
+    command: filebeat -e -strict.perms=false
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/log/apache2/jarvis.access.log:/var/log/apache2/jarvis.access.log
+      - /var/www/jarvis/var/logs/:/var/log/jarvis/
+      # - /var/log/apache2/*.log:/var/log/:ro
+    # volumes_from:
+    #   - logs
+    networks:
+      - elk
 
+  # logs:
+  #   image: busybox
+  #   volumes:
+  #     - /var/log/apache2/jarvis.access.log
+
+networks:
   elk:
     driver: bridge
