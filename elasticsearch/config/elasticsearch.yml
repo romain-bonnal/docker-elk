@@ -14,3 +14,9 @@ discovery.zen.minimum_master_nodes: 1
 ## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
 #
 discovery.type: single-node
+
+# Fix flood_stage disk
+cluster.routing.allocation.disk.watermark.low: "100gb"
+cluster.routing.allocation.disk.watermark.high: "50gb"
+cluster.routing.allocation.disk.watermark.flood_stage: "1gb"
+cluster.info.update.interval: "1m"
