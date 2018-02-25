@@ -15,5 +15,6 @@ output:
 filebeat.prospectors:
 - type: log
   enabled: true
+  document_type: symfony
   paths:
     - /var/log/jarvis/*.log
