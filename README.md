@@ -256,3 +256,60 @@ logstash:
   environment:
     LS_JAVA_OPTS: "-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=18080 -Dcom.sun.management.jmxremote.rmi.port=18080 -Djava.rmi.server.hostname=DOCKER_HOST_IP -Dcom.sun.management.jmxremote.local.only=false"
 ```
+
+
+## Extras
+
+### Filebeat
+
+### Logstash
+
+Inject logs into logstash
+```console
+nc logstash 5000 < /var/www/sandaya/app/logs/lxc.log
+```
+
+### Elasticsearch
+
+show index
+http://elasticsearch:9200/_aliases?pretty
+
+clean index
+```console
+curl -XDELETE 'http://elasticsearch:9200/_all/'
+```
+Allow write and delete
+```console
+PUT _all/_settings
+{
+"index": {
+    "blocks.read_only": false,
+    "blocks.read_only_allow_delete": true
+  }
+}
+```
+Show disk free space
+```console
+http://elasticsearch:9200/_cluster/settings?include_defaults=true&filter_path=**.flood_stage&pretty=true
+
+workaround flood stage disk watermark [95%]
+https://github.com/elastic/kibana/issues/13685
+```console
+ curl -XPUT -H "Content-Type: application/json" http://elasticsearch:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'```
+```
+
+Set flood stage disk watermark
+https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html
+```console
+PUT /_cluster/settings?pretty
+{
+  "transient": {
+    "cluster.routing.allocation.disk.watermark.low": "100gb",
+    "cluster.routing.allocation.disk.watermark.high": "50gb",
+    "cluster.routing.allocation.disk.watermark.flood_stage": "1gb",
+    "cluster.info.update.interval": "1m"
+  }
+}
+```console
+
+### Kibana
