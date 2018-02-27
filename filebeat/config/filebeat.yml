@@ -13,8 +13,13 @@ output:
   #   hosts: ["elasticsearch:9200"]
 
 filebeat.prospectors:
+# - type: log
+#   document_type: symfony
+#   enabled: true
+#   paths:
+#     - /var/log/symfony/*.log
 - type: log
+  document_type: access
   enabled: true
-  document_type: symfony
   paths:
-    - /var/log/jarvis/*.log
+    - /var/log/apache2/*.log
