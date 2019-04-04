@@ -1,20 +1,16 @@
 version: '2'
 
 services:
-
-
   filebeat:
     build:
       context: filebeat/
     command: filebeat -e -strict.perms=false
+    user: root
     volumes:
       - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./logstash/logstash-beats.crt:/etc/pki/tls/certs/logstash-beats.crt
-      - /var/log/apache2/jarvis.access.log:/var/log/apache2/jarvis.access.log
-      - /var/www/jarvis/var/logs/:/var/log/jarvis/
-      # - /var/log/apache2/*.log:/var/log/:ro
-    # volumes_from:
-    #   - logs
+    volumes_from:
+      - logs
     networks:
       - elk
     depends_on:
@@ -30,7 +26,6 @@ services:
     ports:
       - "5000:5000"
     environment:
-      # LS_JAVA_OPTS: "-Xmx256m -Xms256m"
       LS_JAVA_OPTS: "-Xmx1g -Xms1g"
     networks:
       - elk
@@ -63,10 +58,10 @@ services:
     depends_on:
       - elasticsearch
 
-  # logs:
-  #   image: busybox
-  #   volumes:
-  #     - /var/log/apache2/jarvis.access.log
+  logs:
+    image: busybox
+    volumes:
+      - /home/romain/Documents/Projets/OPPBTP/developpement/#6789/log_apache/files/:/var/log/apache2/
 
 networks:
   elk:
