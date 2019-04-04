@@ -61,8 +61,7 @@ services:
   logs:
     image: busybox
     volumes:
-      - /var/www/jarvis/var/logs/:/var/log/symfony/
-      - /var/log/apache2/:/var/log/apache2/
+      - /home/romain/Documents/Projets/OPPBTP/developpement/#6789/log_apache/files/:/var/log/apache2/
 
 networks:
   elk:
