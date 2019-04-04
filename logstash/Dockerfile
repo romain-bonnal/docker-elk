@@ -10,8 +10,6 @@ FROM docker.elastic.co/logstash/logstash-oss:${ELK_VERSION}
 RUN logstash-plugin install logstash-input-beats
 # Plugin popur charger des patterns customs
 RUN logstash-plugin install logstash-filter-grok
-# Plugin redmine
-RUN logstash-plugin install logstash-filter-grok
 
 # certs/keys for Beats and Lumberjack input
 RUN mkdir -p /etc/pki/tls/certs
