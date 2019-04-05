@@ -1,3 +1,7 @@
 # Storage elasticsearch
 !/storage/elasticsearch/data
 /storage/elasticsearch/data*
+
+# Personnal conf
+/scripts/.parameters
+/scripts/datas/redmine

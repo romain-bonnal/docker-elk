@@ -10,9 +10,13 @@ FROM docker.elastic.co/logstash/logstash-oss:${ELK_VERSION}
 RUN logstash-plugin install logstash-input-beats
 # Plugin popur charger des patterns customs
 RUN logstash-plugin install logstash-filter-grok
+# Plugin de chargement a partir d'une commande exec
+RUN logstash-plugin install logstash-input-exec
+# Plugin de chargement a partir d'un appel http
+RUN logstash-plugin install logstash-input-http_poller
 
 # certs/keys for Beats and Lumberjack input
-RUN mkdir -p /etc/pki/tls/certs
-RUN mkdir -p /etc/pki/tls/private
-ADD ./logstash-beats.crt /etc/pki/tls/certs/logstash-beats.crt
-ADD ./logstash-beats.key /etc/pki/tls/private/logstash-beats.key
+# RUN mkdir -p /etc/pki/tls/certs
+# RUN mkdir -p /etc/pki/tls/private
+# ADD ./logstash-beats.crt /etc/pki/tls/certs/logstash-beats.crt
+# ADD ./logstash-beats.key /etc/pki/tls/private/logstash-beats.key

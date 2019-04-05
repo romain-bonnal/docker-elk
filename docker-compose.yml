@@ -55,22 +55,22 @@ services:
     volumes:
       - /home/romain/Documents/Projets/OPPBTP/developpement/#6789/log_apache/files/:/var/log/apache2/
 
-  filebeat:
-    build:
-      context: filebeat/
-      args:
-        ELK_VERSION: $ELK_VERSION
-    command: filebeat -e -strict.perms=false
-    user: root
-    volumes:
-      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./logstash/logstash-beats.crt:/etc/pki/tls/certs/logstash-beats.crt
-    volumes_from:
-      - logs
-    networks:
-      - elk
-    depends_on:
-      - logstash
+  # filebeat:
+  #   build:
+  #     context: filebeat/
+  #     args:
+  #       ELK_VERSION: $ELK_VERSION
+  #   command: filebeat -e -strict.perms=false
+  #   user: root
+  #   volumes:
+  #     - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+  #     - ./logstash/logstash-beats.crt:/etc/pki/tls/certs/logstash-beats.crt
+  #   volumes_from:
+  #     - logs
+  #   networks:
+  #     - elk
+  #   depends_on:
+  #     - logstash
 
 networks:
   elk:

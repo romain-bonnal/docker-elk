@@ -1,0 +1,3 @@
+REDMINE_PROTOCOL=http
+REDMINE_HOST=demo.redmine.org
+REDMINE_API_KEY="YourApiKeyHere"

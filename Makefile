@@ -23,6 +23,10 @@ dev: ## Run container in development mode
 
 # Build and run the container
 up: ## Spin up the project
+	docker-compose up --build $(APP_NAME)
+
+# Build and run the container and detach
+up-d: ## Spin up the project
 	docker-compose up -d --build $(APP_NAME)
 
 down: ## Spin up the project
