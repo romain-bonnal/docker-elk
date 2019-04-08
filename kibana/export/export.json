@@ -1,0 +1,322 @@
+[
+  {
+    "_id": "eb415280-57b3-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Nb de tickets KO",
+      "visState": "{\"title\":\"[KPI] Nb de tickets KO\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":60}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Tickets En cours\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[{\"meta\":{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"type\":\"phrases\",\"key\":\"issue.status.name\",\"value\":\"Recette KO, Production KO\",\"params\":[\"Recette KO\",\"Production KO\"],\"negate\":false,\"disabled\":false,\"alias\":null},\"query\":{\"bool\":{\"should\":[{\"match_phrase\":{\"issue.status.name\":\"Recette KO\"}},{\"match_phrase\":{\"issue.status.name\":\"Production KO\"}}],\"minimum_should_match\":1}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "ab13ce10-57c0-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[HISTO] Temps passé tracker",
+      "visState": "{\"title\":\"[HISTO] Temps passé tracker\",\"type\":\"horizontal_bar\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"right\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":true,\"truncate\":200},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"BottomAxis-1\",\"type\":\"value\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":75,\"filter\":true,\"truncate\":100},\"title\":{\"text\":\"Temps passé\"}}],\"seriesParams\":[{\"show\":true,\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Temps passé\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_spent_hours\",\"customLabel\":\"Temps passé\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.tracker.name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Tracker\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"legendOpen\":false}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "678c7cd0-57b8-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[CAM] Statut des tickets",
+      "visState": "{\"title\":\"[CAM] Statut des tickets\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"top\",\"isDonut\":true,\"labels\":{\"show\":false,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Nb de demande\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"issue.tracker.name.keyword\",\"size\":4,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Tracker\",\"row\":false}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.status.name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Résolu\":\"#629E51\",\"Livré en recette\":\"#9AC48A\",\"Recette Validée\":\"#3F6833\",\"En cours\":\"#EF843C\",\"Livré en recette interne\":\"#F9934E\",\"Nouveau\":\"#F9BA8F\",\"A livrer en recette interne\":\"#B7DBAB\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"oppbtp\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "37355fe0-57b6-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[HISTO] Date mise à jour",
+      "visState": "{\"title\":\"[HISTO] Date mise à jour\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Nb de tickets\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Nb de tickets\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true,\"interpolate\":\"cardinal\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"times\":[],\"addTimeMarker\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Nb de tickets\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.updated_on\",\"timeRange\":{\"from\":\"now-90d\",\"to\":\"now\",\"mode\":\"quick\"},\"useNormalizedEsInterval\":true,\"interval\":\"d\",\"time_zone\":\"Europe/Berlin\",\"drop_partials\":true,\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Date de mise à jour\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"legendOpen\":true,\"colors\":{\"Nb de tickets\":\"#1F78C1\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "ef25b040-57c1-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[GAUGE] Temps passé tracker",
+      "visState": "{\"title\":\"[GAUGE] Temps passé tracker\",\"type\":\"gauge\",\"params\":{\"type\":\"gauge\",\"addTooltip\":true,\"addLegend\":true,\"isDisplayWarning\":false,\"gauge\":{\"verticalSplit\":true,\"extendRange\":false,\"percentageMode\":false,\"gaugeType\":\"Arc\",\"gaugeStyle\":\"Full\",\"backStyle\":\"Full\",\"orientation\":\"vertical\",\"colorSchema\":\"Greens\",\"gaugeColorMode\":\"Labels\",\"colorsRange\":[{\"from\":0,\"to\":1000}],\"invertColors\":false,\"labels\":{\"show\":true,\"color\":\"black\"},\"scale\":{\"show\":false,\"labels\":false,\"color\":\"#333\"},\"type\":\"meter\",\"style\":{\"bgWidth\":0.9,\"width\":0.9,\"mask\":false,\"bgMask\":false,\"maskBars\":50,\"bgFill\":\"#eee\",\"bgColor\":false,\"subText\":\"\",\"fontSize\":60,\"labelColor\":true}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.spent_hours\",\"customLabel\":\"Temps passé\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"issue.tracker.name.keyword\",\"size\":7,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Tracker\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"0 - 1000\":\"#1F78C1\",\"0 - 50\":\"#E0F9D7\",\"75 - 100\":\"#7EB26D\"},\"defaultColors\":{\"0 - 1000\":\"rgb(247,252,245)\"},\"legendOpen\":false}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "cf22d600-57b3-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Nb de tickets En cours",
+      "visState": "{\"title\":\"[KPI] Nb de tickets En cours\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":35}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Tickets En cours\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[{\"meta\":{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"issue.status.name\",\"value\":\"En cours\",\"params\":{\"query\":\"En cours\",\"type\":\"phrase\"}},\"query\":{\"match\":{\"issue.status.name\":{\"query\":\"En cours\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "b6867b60-57b3-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Nb de tickets Nouveau",
+      "visState": "{\"title\":\"[KPI] Nb de tickets Nouveau\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":35}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Tickets Nouveau\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[{\"meta\":{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"issue.status.name\",\"value\":\"Nouveau\",\"params\":{\"query\":\"Nouveau\",\"type\":\"phrase\"}},\"query\":{\"match\":{\"issue.status.name\":{\"query\":\"Nouveau\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "f12351d0-57bd-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Temps estimé",
+      "visState": "{\"title\":\"[KPI] Temps estimé\",\"type\":\"metric\",\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"invertColors\":false,\"labels\":{\"show\":true},\"metricColorMode\":\"None\",\"percentageMode\":false,\"style\":{\"bgColor\":false,\"bgFill\":\"#000\",\"fontSize\":35,\"labelColor\":false,\"subText\":\"\"},\"useRanges\":false},\"type\":\"metric\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_estimated_hours\",\"customLabel\":\"Temps estimé\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "b1ad7080-57bd-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Temps passé",
+      "visState": "{\"title\":\"[KPI] Temps passé\",\"type\":\"metric\",\"params\":{\"addLegend\":false,\"addTooltip\":true,\"metric\":{\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"invertColors\":false,\"labels\":{\"show\":true},\"metricColorMode\":\"None\",\"percentageMode\":false,\"style\":{\"bgColor\":false,\"bgFill\":\"#000\",\"fontSize\":36,\"labelColor\":false,\"subText\":\"\"},\"useRanges\":false},\"type\":\"metric\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_spent_hours\",\"customLabel\":\"Temps passé\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "579e85c0-57b3-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[KPI] Nb de tickets",
+      "visState": "{\"title\":\"[KPI] Nb de tickets\",\"type\":\"metric\",\"params\":{\"addTooltip\":true,\"addLegend\":false,\"type\":\"metric\",\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":10000}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":35}}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Tickets\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "fb951c00-57d3-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[MAP] Exemple de carte",
+      "visState": "{\"title\":\"[MAP] Exemple de carte\",\"type\":\"region_map\",\"params\":{\"legendPosition\":\"bottomright\",\"addTooltip\":true,\"colorSchema\":\"Yellow to Red\",\"selectedLayer\":{\"name\":\"France Departments\",\"origin\":\"elastic_maps_service\",\"id\":\"france_departments\",\"created_at\":\"2018-04-04T20:25:39.183760\",\"attribution\":\"<a href=\\\"https://www.openstreetmap.org/copyright\\\">&#169; OpenStreetMap contributors</a> | <a href=\\\"https://www.elastic.co/elastic-maps-service\\\">Elastic Maps Service</a>\",\"fields\":[{\"type\":\"id\",\"name\":\"iso_3166_2\",\"description\":\"ISO 3166-2 code\"},{\"type\":\"id\",\"name\":\"insee\",\"description\":\"INSEE department code\"},{\"type\":\"property\",\"name\":\"label_en\",\"description\":\"name (en)\"},{\"type\":\"property\",\"name\":\"label_fr\",\"description\":\"name (fr)\"}],\"format\":{\"type\":\"geojson\"},\"layerId\":\"elastic_maps_service.France Departments\",\"isEMS\":true},\"emsHotLink\":\"https://maps.elastic.co/v6.7?locale=en#file/france_departments\",\"selectedJoinField\":{\"type\":\"id\",\"name\":\"insee\",\"description\":\"INSEE department code\"},\"isDisplayWarning\":true,\"wms\":{\"enabled\":false,\"options\":{\"format\":\"image/png\",\"transparent\":true},\"selectedTmsLayer\":{\"origin\":\"elastic_maps_service\",\"id\":\"road_map\",\"minZoom\":0,\"maxZoom\":10,\"attribution\":\"<p>&#169; <a href=\\\"http://www.openstreetmap.org/copyright\\\">OpenStreetMap</a> contributors | <a href=\\\"https://openmaptiles.org/\\\">OpenMapTiles</a> | <a href=\\\"https://www.maptiler.com/\\\">MapTiler</a> | <a href=\\\"https://www.elastic.co/elastic-maps-service\\\">Elastic Maps Service</a></p>&#10;\"}},\"mapZoom\":2,\"mapCenter\":[0,0],\"outlineWeight\":1,\"showAllShapes\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.author.id\",\"size\":100,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":true,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\"}}]}",
+      "uiStateJSON": "{\"mapZoom\":6,\"mapCenter\":[46.10370875598026,5.273437500000001]}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "85fd2480-57a9-11e9-8f52-fdaa5f481673",
+    "_type": "index-pattern",
+    "_source": {
+      "title": "redmine*",
+      "timeFieldName": "issue.updated_on",
+      "fields": "[{\"name\":\"_id\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"_index\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"_score\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"_source\",\"type\":\"_source\",\"count\":0,\"scripted\":false,\"searchable\":false,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"_type\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":false},{\"name\":\"issue.assigned_to.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.assigned_to.name\",\"type\":\"string\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.assigned_to.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.author.id\",\"type\":\"number\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.author.name\",\"type\":\"string\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.author.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.category.id\",\"type\":\"number\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.category.name\",\"type\":\"string\",\"count\":3,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.category.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.closed_on\",\"type\":\"date\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.created_on\",\"type\":\"date\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.custom_fields.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.custom_fields.name\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.custom_fields.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.custom_fields.value\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.custom_fields.value.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.description\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.description.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.done_ratio\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.due_date\",\"type\":\"date\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.estimated_hours\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.fixed_version.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.fixed_version.name\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.fixed_version.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.id\",\"type\":\"number\",\"count\":1,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.parent.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.priority.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.priority.name\",\"type\":\"string\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.priority.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.project.id\",\"type\":\"number\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.project.name\",\"type\":\"string\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.project.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.spent_hours\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.start_date\",\"type\":\"date\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.status.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.status.name\",\"type\":\"string\",\"count\":1,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.status.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.subject\",\"type\":\"string\",\"count\":3,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.subject.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.total_estimated_hours\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.total_spent_hours\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.tracker.id\",\"type\":\"number\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.tracker.name\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":false,\"readFromDocValues\":false},{\"name\":\"issue.tracker.name.keyword\",\"type\":\"string\",\"count\":0,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true},{\"name\":\"issue.updated_on\",\"type\":\"date\",\"count\":2,\"scripted\":false,\"searchable\":true,\"aggregatable\":true,\"readFromDocValues\":true}]"
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "b3711650-57b9-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[CAM] Temps passé projet",
+      "visState": "{\"title\":\"[CAM] Temps passé projet\",\"type\":\"pie\",\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"bottom\",\"isDonut\":true,\"labels\":{\"show\":false,\"values\":true,\"last_level\":true,\"truncate\":100}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_spent_hours\",\"customLabel\":\"Temps passé\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.project.name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Projet\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Site CodeIn\":\"#5195CE\",\"SANDAYA - Web v4\":\"#F9BA8F\",\"OPPBTP TMA\":\"#F29191\",\"TMA - valvital.fr\":\"#B7DBAB\",\"Delabie - Refonte 2019\":\"#AEA2E0\",\"TMA FFGolf\":\"#70DBED\",\"TNP TMA\":\"#E0F9D7\",\"BRT TMA\":\"#FCEACA\",\"Delabie\":\"#FCE2DE\",\"TMA - Intranet ValVital\":\"#F9D9F9\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[{\"meta\":{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"negate\":true,\"disabled\":false,\"alias\":\"Absences\",\"type\":\"phrase\",\"key\":\"issue.project.id\",\"value\":\"187\",\"params\":{\"query\":187,\"type\":\"phrase\"}},\"query\":{\"match\":{\"issue.project.id\":{\"query\":187,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "ef8a8a50-5876-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[HMAP] Projet Statut",
+      "visState": "{\"title\":\"[HMAP] Projet Statut\",\"type\":\"heatmap\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"colorSchema\":\"Yellow to Red\",\"colorsNumber\":4,\"colorsRange\":[],\"enableHover\":true,\"invertColors\":false,\"legendPosition\":\"bottom\",\"percentageMode\":false,\"setColorRange\":false,\"times\":[],\"type\":\"heatmap\",\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"color\":\"#555\",\"overwriteColor\":false,\"rotate\":0,\"show\":true},\"scale\":{\"defaultYExtents\":false,\"type\":\"linear\"},\"show\":false,\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Nb tickets\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"issue.project.name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":true,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Projet\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"issue.status.name.keyword\",\"size\":10,\"order\":\"asc\",\"orderBy\":\"_key\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":true,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Statut\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"defaultColors\":{\"0 - 28\":\"rgb(255,255,204)\",\"28 - 55\":\"rgb(254,217,118)\",\"55 - 83\":\"rgb(253,141,60)\",\"83 - 110\":\"rgb(227,27,28)\"}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "5bf67290-57d1-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[MARK] Test Markdown",
+      "visState": "{\"title\":\"[MARK] Test Markdown\",\"type\":\"markdown\",\"params\":{\"fontSize\":12,\"openLinksInNewTab\":false,\"markdown\":\"# Exemple d'intégration d'un bloc de texte\\n\\n[![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\\n[![Elastic Stack version](https://img.shields.io/badge/ELK-6.7.0-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/376)\\n[![Build Status](https://api.travis-ci.org/deviantony/docker-elk.svg?branch=master)](https://travis-ci.org/deviantony/docker-elk)\\n\\nRun the latest version of the [Elastic stack](https://www.elastic.co/elk-stack) with Docker and Docker Compose.\\n\\nIt will give you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticsearch\\nand the visualization power of Kibana.\"},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "e6f8e680-57cb-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[TAB] Projet - statut",
+      "visState": "{\"aggs\":[{\"enabled\":true,\"id\":\"1\",\"params\":{\"customLabel\":\"Nb tickets\"},\"schema\":\"metric\",\"type\":\"count\"},{\"enabled\":true,\"id\":\"3\",\"params\":{\"customLabel\":\"Temps estimé\",\"field\":\"issue.total_estimated_hours\"},\"schema\":\"metric\",\"type\":\"sum\"},{\"enabled\":true,\"id\":\"4\",\"params\":{\"customLabel\":\"Temps passé\",\"field\":\"issue.total_spent_hours\"},\"schema\":\"metric\",\"type\":\"sum\"},{\"enabled\":true,\"id\":\"5\",\"params\":{\"customLabel\":\"Projet\",\"field\":\"issue.project.name.keyword\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"row\":true,\"size\":5},\"schema\":\"split\",\"type\":\"terms\"},{\"enabled\":true,\"id\":\"2\",\"params\":{\"customLabel\":\"Projet\",\"field\":\"issue.status.name.keyword\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"size\":12},\"schema\":\"bucket\",\"type\":\"terms\"}],\"params\":{\"perPage\":12,\"showMetricsAtAllLevels\":true,\"showPartialRows\":false,\"showTotal\":true,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"title\":\"[TAB] Projet - statut\",\"type\":\"table\"}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "eb263420-57d9-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "[TAB] Projet ",
+      "visState": "{\"title\":\"[TAB] Projet \",\"type\":\"table\",\"params\":{\"perPage\":12,\"showMetricsAtAllLevels\":true,\"showPartialRows\":false,\"showTotal\":true,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Nb tickets\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_estimated_hours\",\"customLabel\":\"Temps estimé\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"issue.total_spent_hours\",\"customLabel\":\"Temps passé\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"issue.project.name.keyword\",\"size\":12,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Projet\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "aec6cd80-57cc-11e9-8f52-fdaa5f481673",
+    "_type": "visualization",
+    "_source": {
+      "title": "Filtres",
+      "visState": "{\"title\":\"Filtres\",\"type\":\"input_control_vis\",\"params\":{\"controls\":[{\"id\":\"1554487116659\",\"indexPattern\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"fieldName\":\"issue.project.name.keyword\",\"parent\":\"\",\"label\":\"Projet\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"}},{\"id\":\"1554487180215\",\"indexPattern\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"fieldName\":\"issue.tracker.name.keyword\",\"parent\":\"\",\"label\":\"Tracker\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"}},{\"id\":\"1554487148236\",\"indexPattern\":\"85fd2480-57a9-11e9-8f52-fdaa5f481673\",\"fieldName\":\"issue.status.name.keyword\",\"parent\":\"\",\"label\":\"Statut\",\"type\":\"list\",\"options\":{\"type\":\"terms\",\"multiselect\":true,\"dynamicOptions\":true,\"size\":5,\"order\":\"desc\"}}],\"updateFiltersOnChange\":false,\"useTimeFilter\":false,\"pinFilters\":false},\"aggs\":[]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  },
+  {
+    "_id": "78825d10-57b4-11e9-8f52-fdaa5f481673",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Suivi d'activité",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"embeddableConfig\":{},\"gridData\":{\"x\":0,\"y\":7,\"w\":8,\"h\":7,\"i\":\"1\"},\"id\":\"579e85c0-57b3-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"1\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":8,\"y\":7,\"w\":8,\"h\":7,\"i\":\"2\"},\"id\":\"b6867b60-57b3-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"2\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":16,\"y\":7,\"w\":8,\"h\":7,\"i\":\"3\"},\"id\":\"cf22d600-57b3-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"3\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{\"vis\":{\"colors\":{\"Nb de tickets\":\"#1F78C1\"},\"legendOpen\":false}},\"gridData\":{\"x\":0,\"y\":14,\"w\":24,\"h\":22,\"i\":\"5\"},\"id\":\"37355fe0-57b6-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"5\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{\"vis\":{\"colors\":{\"BRT TMA\":\"#FCEACA\",\"Delabie\":\"#FCE2DE\",\"Delabie - Refonte 2019\":\"#D683CE\",\"OPPBTP TMA\":\"#EA6460\",\"SANDAYA - Web v4\":\"#9AC48A\",\"Site CodeIn\":\"#5195CE\",\"TMA - Intranet ValVital\":\"#DEDAF7\",\"TMA - valvital.fr\":\"#70DBED\",\"TMA FFGolf\":\"#B7DBAB\",\"TNP TMA\":\"#F4D598\"},\"legendOpen\":false}},\"gridData\":{\"x\":24,\"y\":14,\"w\":16,\"h\":22,\"i\":\"7\"},\"id\":\"b3711650-57b9-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"7\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":32,\"y\":7,\"w\":8,\"h\":7,\"i\":\"8\"},\"id\":\"b1ad7080-57bd-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"8\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":24,\"y\":7,\"w\":8,\"h\":7,\"i\":\"9\"},\"id\":\"f12351d0-57bd-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"9\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{\"vis\":{\"colors\":{\"0 - 1000\":\"#447EBC\",\"0 - 50\":\"#E0F9D7\",\"75 - 100\":\"#7EB26D\"},\"defaultColors\":{\"0 - 1000\":\"rgb(247,252,245)\"},\"legendOpen\":false}},\"gridData\":{\"x\":40,\"y\":7,\"w\":8,\"h\":29,\"i\":\"10\"},\"id\":\"ef25b040-57c1-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"10\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":0,\"y\":0,\"w\":48,\"h\":7,\"i\":\"12\"},\"id\":\"aec6cd80-57cc-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"12\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{},\"gridData\":{\"x\":24,\"y\":64,\"w\":24,\"h\":22,\"i\":\"13\"},\"id\":\"5bf67290-57d1-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"13\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"embeddableConfig\":{\"mapCenter\":[46.255846818480315,2.735595703125],\"mapZoom\":6},\"gridData\":{\"x\":24,\"y\":36,\"w\":24,\"h\":28,\"i\":\"14\"},\"id\":\"fb951c00-57d3-11e9-8f52-fdaa5f481673\",\"panelIndex\":\"14\",\"type\":\"visualization\",\"version\":\"6.7.0\"},{\"gridData\":{\"x\":0,\"y\":64,\"w\":24,\"h\":22,\"i\":\"15\"},\"version\":\"6.7.0\",\"panelIndex\":\"15\",\"type\":\"visualization\",\"id\":\"eb263420-57d9-11e9-8f52-fdaa5f481673\",\"embeddableConfig\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":2,\"direction\":\"desc\"}}}}},{\"gridData\":{\"x\":0,\"y\":36,\"w\":24,\"h\":28,\"i\":\"16\"},\"version\":\"6.7.0\",\"panelIndex\":\"16\",\"type\":\"visualization\",\"id\":\"ef8a8a50-5876-11e9-8f52-fdaa5f481673\",\"embeddableConfig\":{\"vis\":{\"defaultColors\":{\"0 - 28\":\"rgb(255,255,204)\",\"28 - 55\":\"rgb(254,217,118)\",\"55 - 83\":\"rgb(253,141,60)\",\"83 - 110\":\"rgb(227,27,28)\"},\"legendOpen\":true}}}]",
+      "optionsJSON": "{\"darkTheme\":false,\"hidePanelTitles\":false,\"useMargins\":true}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
+      }
+    },
+    "_meta": {
+      "savedObjectVersion": 2
+    }
+  }
+]
