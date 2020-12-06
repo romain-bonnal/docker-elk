@@ -40,6 +40,14 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - type: bind
+        source: ./logstash/mapping
+        target: /usr/share/logstash/mapping
+        read_only: true
+      - type: bind
+        source: ./var/data
+        target: /usr/share/logstash/inputs
+        read_only: true
     ports:
       - "5044:5044"
       - "5000:5000/tcp"

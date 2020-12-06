@@ -1,0 +1,12 @@
+{
+    "index_patterns": ["logstash-json-*"],
+    "mappings": {
+      "doc": {
+        "properties": {
+          "id": { "type": "integer" },
+          "index": { "type": "integer" },
+          "source": { "type": "keyword" }
+         }
+       }
+     }
+   }
