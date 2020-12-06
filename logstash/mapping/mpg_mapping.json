@@ -1,0 +1,25 @@
+{
+  "index_patterns": ["mpg-*"],
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+        "id": { "type": "keyword" },
+        "stats": {
+          "properties": {
+            "matches": {
+              "properties": {
+                "info": {
+                  "properties": {
+                    "rate": { "type": "float" }
+                  }  
+                }
+              }
+            }
+          }
+        }
+    }  
+}
+ }

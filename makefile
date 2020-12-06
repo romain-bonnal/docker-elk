@@ -55,5 +55,5 @@ docker-enter-kibana: ## Enter in docker kibana
 
 logstash-force: ## exec force logstash (l'option path.data permet de forcer la création d'une instance logstash)
 	# $(LOGSTASH) logstash -r -f /usr/share/logstash/pipeline/logstash_file_to_stdout.conf --path.data /tmp
-	$(LOGSTASH) logstash -r -f /usr/share/logstash/pipeline/logstash_file_to_elastic.conf --path.data /tmp
+	$(LOGSTASH) logstash -r -f /usr/share/logstash/pipeline/logstash_mpg_file_to_elastic.conf --path.data /tmp
 
