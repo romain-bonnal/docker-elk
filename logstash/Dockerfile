@@ -7,13 +7,15 @@ FROM docker.elastic.co/logstash/logstash:${ELK_VERSION}
 # Example: RUN logstash-plugin install logstash-filter-json
 # https://www.elastic.co/guide/en/logstash/current/filter-plugins.html
 # Plugin pour filebeat
-RUN logstash-plugin install logstash-input-beats
+# RUN logstash-plugin install logstash-input-beats
 # Plugin popur charger des patterns customs
-RUN logstash-plugin install logstash-filter-grok
+# RUN logstash-plugin install logstash-filter-grok
 # Plugin de chargement a partir d'une commande exec
-RUN logstash-plugin install logstash-input-exec
+# RUN logstash-plugin install logstash-input-exec
 # Plugin de chargement a partir d'un appel http
-RUN logstash-plugin install logstash-input-http_poller
+# RUN logstash-plugin install logstash-input-http_poller
+# Plugin json filter
+RUN logstash-plugin install logstash-filter-json
 
 # certs/keys for Beats and Lumberjack input
 # RUN mkdir -p /etc/pki/tls/certs

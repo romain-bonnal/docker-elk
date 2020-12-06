@@ -1,0 +1,5 @@
+{"index":"12345","id":1,"message":"hello world"}
+{"index":"12346","id":2,"message":"warning"}
+{"index":"12347","id":3,"message":"hello"}
+{"index":"12347","id":3,"message":"hello"}
+{"index":"12347","id":3,"message":"hello","stats":["goal":2,"ontarget":3"]}

@@ -7,6 +7,8 @@ DOCKER-ELASTIC  = docker-elk_elasticsearch_1
 DOCKER-KIBANA   = docker-elk_kibana_1
 DOCKER-LOGSTASH = docker-elk_logstash_1
 
+LOGSTASH = docker exec --tty=true -w /usr/share/logstash -i $(DOCKER-LOGSTASH)
+
 PARAM = $(filter-out $@,$(MAKECMDGOALS))
 
 .DEFAULT_GOAL := help
@@ -45,3 +47,11 @@ docker-enter-logstash: ## Enter in docker logstash
 
 docker-enter-kibana: ## Enter in docker kibana
 	$(DOCKER) exec -it $(DOCKER-KIBANA) /bin/bash
+
+##
+## Logstash
+## -----------------
+##
+
+logstash-force: ## exec force logstash (l'option path.data permet de forcer la création d'une instance logstash)
+	$(LOGSTASH) logstash -r -f /usr/share/logstash/pipeline/logstash.file.conf --path.data /tmp
