@@ -1,5 +1,5 @@
 {
-  "index_patterns": ["mpg-*"],
+  "index_patterns": ["redmine-*"],
   "settings": {
     "number_of_shards": 1,
     "number_of_replicas": 0
@@ -10,6 +10,7 @@
         "stats": {
           "properties": {
             "matches": {
+              "type": "nested",
               "properties": {
                 "info": {
                   "properties": {

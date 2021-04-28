@@ -4,10 +4,6 @@
 
 cd datas
 
-echo ${REDMINE_PROTOCOL}
-echo ${REDMINE_HOST}
-echo ${REDMINE_API_KEY}
-
 # Prepare
 mkdir -p redmine
 rm -rf redmine/*

@@ -9,4 +9,4 @@ cd ../datas/sample
 
 # Redmine
 cd redmine
-curl -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/redmine/issues/_bulk?pretty' --data-binary @redmine.json
+curl --user elastic:changeme -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/redmine/issues/_bulk?pretty' --data-binary @redmine.json

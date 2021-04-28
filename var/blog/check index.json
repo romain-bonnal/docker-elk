@@ -1,0 +1,26 @@
+// GET http://localhost:9200/redmine-*
+{
+    "redmine-2021.04.27": {
+        "aliases": {},
+        "mappings": {},
+        "settings": {
+            "index": {
+                "routing": {
+                    "allocation": {
+                        "include": {
+                            "_tier_preference": "data_content"
+                        }
+                    }
+                },
+                "number_of_shards": "1",
+                "provided_name": "redmine-2021.04.27",
+                "creation_date": "1619531488992",
+                "number_of_replicas": "0",
+                "uuid": "ybW-WcvcQ7OWmWWZpviikA",
+                "version": {
+                    "created": "7100099"
+                }
+            }
+        }
+    }
+}

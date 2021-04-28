@@ -17,3 +17,21 @@ http://jarvis.loc/
 Créer un pattern dans kibana
 
 # Discover
+
+# Kibana
+
+http://localhost:5601/app/home#/?_g=()
+* user: *elastic*
+* password: *changeme*
+
+
+# Elastic
+
+ Show index
+curl --user elastic:changeme -XGET localhost:9200/redmine-*
+
+ Remove index
+curl --user elastic:changeme -XDELETE localhost:9200/redmine-*
+
+ Add index
+ curl --user elastic:changeme -H 'Content-Type: application/x-ndjson' -XPOST 'localhost:9200/redmine/issues/_bulk?pretty' --data-binary @redmine-issues.json
